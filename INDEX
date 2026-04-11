@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WiFi - Barbearia Reino da Barba</title>
+    <style>
+        /* Reset básico */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Corpo principal com fundo preto e padrão texturizado */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #1a1a1a;
+            background-image: radial-gradient(circle, #3a3a3a 1px, transparent 1px);
+            background-size: 20px 20px;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+
+        /* Container principal */
+        .container {
+            max-width: 600px;
+            width: 100%;
+            background-color: rgba(26, 26, 26, 0.9);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 0 20px rgba(255, 107, 53, 0.5);
+            text-align: center;
+        }
+
+        /* Header com logo */
+        .header {
+            margin-bottom: 20px;
+        }
+
+        .logo {
+            font-size: 4em;
+            color: #ff6b35;
+            margin-bottom: 10px;
+        }
+
+        /* Nome da barbearia */
+        .nome-barbearia {
+            font-size: 2.5em;
+            color: #ff6b35;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Mensagem temática */
+        .mensagem {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            color: #ffffff;
+        }
+
+        /* Botão Avaliar no Google */
+        .botao-google {
+            display: inline-block;
+            background-color: #ff6b35;
+            color: #1a1a1a;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-bottom: 30px;
+            transition: background-color 0.3s ease;
+        }
+
+        .botao-google:hover {
+            background-color: #e55a2b;
+        }
+
+        /* Seção WiFi */
+        .wifi-section {
+            margin-bottom: 30px;
+        }
+
+        .wifi-info {
+            background-color: #3a3a3a;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+
+        .wifi-info p {
+            margin-bottom: 5px;
+        }
+
+        .copy-btn {
+            background-color: #ff6b35;
+            color: #1a1a1a;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+            cursor: pointer;
+            margin-left: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .copy-btn:hover {
+            background-color: #e55a2b;
+        }
+
+        /* Campo de validação */
+        .validacao {
+            margin-bottom: 20px;
+        }
+
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ff6b35;
+            border-radius: 5px;
+            background-color: #3a3a3a;
+            color: #ffffff;
+            font-size: 1em;
+            margin-bottom: 10px;
+        }
+
+        button {
+            background-color: #ff6b35;
+            color: #1a1a1a;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #e55a2b;
+        }
+
+        /* Feedback */
+        .feedback {
+            display: none;
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .success {
+            background-color: #4CAF50;
+            color: #ffffff;
+        }
+
+        .error {
+            background-color: #f44336;
+            color: #ffffff;
+        }
+
+        /* Rodapé */
+        .rodape {
+            margin-top: 30px;
+            font-size: 2em;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            .nome-barbearia {
+                font-size: 2em;
+            }
+
+            .logo {
+                font-size: 3em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header com logo -->
+        <div class="header">
+            <div class="logo">🦁👑</div> <!-- Leão com coroa usando emojis -->
+            <h1 class="nome-barbearia">BARBEARIA REINO DA BARBA</h1>
+        </div>
+
+        <!-- Mensagem temática -->
+        <p class="mensagem">Bem-vindo ao Reino da Barba! Para entrar em nosso domínio, valide seu acesso ao WiFi e mostre que é digno de estar aqui.</p>
+
+        <!-- Botão Avaliar no Google -->
+        <a href="https://maps.app.goo.gl/ZYqkTHuRVDWzNreA6?g_st=ic" class="botao-google" target="_blank">Avaliar no Google</a>
+
+        <!-- Seção WiFi -->
+        <div class="wifi-section">
+            <h2>Informações do WiFi</h2>
+            <div class="wifi-info">
+                <p><strong>SSID:</strong> Reino da Barba <button class="copy-btn" onclick="copiarTexto('Reino da Barba')">Copiar</button></p>
+                <p><strong>Senha:</strong> #reinodabarba82# <button class="copy-btn" onclick="copiarTexto('#reinodabarba82#')">Copiar</button></p>
+            </div>
+        </div>
+
+        <!-- Campo de validação -->
+        <div class="validacao">
+            <input type="password" id="senha-input" placeholder="Digite a senha do WiFi">
+            <button onclick="validarSenha()">Validar Acesso</button>
+        </div>
+
+        <!-- Feedback -->
+        <div id="feedback" class="feedback"></div>
+
+        <!-- Rodapé com ícones -->
+        <div class="rodape">✂️ 🪒 💇‍♂️</div>
+    </div>
+
+    <script>
+        // Dados da barbearia
+        const nomeBarbearia = 'Barbearia Reino da Barba';
+        const ssid = 'Reino da Barba';
+        const senha = '#reinodabarba82#';
+        const googleLink = 'https://maps.app.goo.gl/ZYqkTHuRVDWzNreA6?g_st=ic';
+
+        // Função para copiar texto
+        function copiarTexto(texto) {
+            navigator.clipboard.writeText(texto).then(() => {
+                alert('Copiado para a área de transferência!');
+            }).catch(err => {
+                console.error('Erro ao copiar: ', err);
+            });
+        }
+
+        // Função para validar senha
+        function validarSenha() {
+            const inputSenha = document.getElementById('senha-input').value;
+            const feedback = document.getElementById('feedback');
+
+            if (inputSenha === senha) {
+                feedback.textContent = 'Acesso concedido! Você é digno de entrar no Reino da Barba.';
+                feedback.className = 'feedback success';
+                feedback.style.display = 'block';
+                // Salvar no LocalStorage
+                localStorage.setItem('wifiAcesso', 'validado');
+                // Opcional: redirecionar ou simular acesso
+            } else {
+                feedback.textContent = 'Senha incorreta. Tente novamente, súdito.';
+                feedback.className = 'feedback error';
+                feedback.style.display = 'block';
+            }
+        }
+
+        // Verificar se já validado no LocalStorage
+        window.onload = function() {
+            if (localStorage.getItem('wifiAcesso') === 'validado') {
+                document.getElementById('feedback').textContent = 'Acesso já validado anteriormente.';
+                document.getElementById('feedback').className = 'feedback success';
+                document.getElementById('feedback').style.display = 'block';
+            }
+        };
+    </script>
+</body>
+</html>
