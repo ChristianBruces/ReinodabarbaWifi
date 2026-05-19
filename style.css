@@ -1,0 +1,93 @@
+* {
+  display: block;
+  font-size: 24px;
+  color: #0B3B6F;
+  margin-top: 8px;
+}
+
+.gargalo-box {
+  background: white;
+  border-radius: 20px;
+  padding: 20px;
+  margin-top: 25px;
+}
+
+.gargalo-box strong {
+  display: block;
+  color: #d90429;
+  font-size: 22px;
+  margin-top: 10px;
+}
+
+.bars {
+  margin-top: 25px;
+}
+
+.bar-item {
+  margin-bottom: 20px;
+}
+
+.bar-item label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.bar-bg {
+  height: 18px;
+  background: #e5e7eb;
+  border-radius: 100px;
+  overflow: hidden;
+}
+
+.bar {
+  height: 100%;
+  border-radius: 100px;
+}
+
+.red-bar { background: #d90429; }
+.orange-bar { background: #f77f00; }
+.yellow-bar { background: #ffbe0b; }
+
+.conclusion {
+  background: linear-gradient(135deg,#0B3B6F,#1E63C7);
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  align-items: center;
+}
+
+.conclusion p {
+  margin-top: 20px;
+  font-size: 20px;
+  line-height: 1.8;
+}
+
+.goal-card {
+  background: white;
+  color: #0B3B6F;
+  border-radius: 30px;
+  padding: 40px;
+  text-align: center;
+  min-width: 320px;
+}
+
+.goal-card h3 {
+  font-size: 80px;
+  margin: 10px 0;
+}
+
+@media(max-width:1200px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    flex-direction: column;
+  }
+
+  .conclusion {
+    flex-direction: column;
+  }
+}
