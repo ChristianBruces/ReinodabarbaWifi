@@ -1,270 +1,704 @@
+# Estrutura do Projeto
+
+```bash
+/dashboard-gargalos
+ ├── index.html
+ ├── style.css
+ ├── script.js
+ └── assets/
+      └── dashboard.png
+```
+
+---
+
+# index.html
+
+```html
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WiFi - Barbearia Reino da Barba</title>
-    <style>
-        /* Reset básico */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard de Gargalos</title>
 
-        /* Corpo principal com fundo preto e padrão texturizado */
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #1a1a1a;
-            background-image: radial-gradient(circle, #3a3a3a 1px, transparent 1px);
-            background-size: 20px 20px;
-            color: #ffffff;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            transition: all 0.3s ease;
-        }
+  <link rel="stylesheet" href="style.css" />
 
-        /* Container principal */
-        .container {
-            max-width: 600px;
-            width: 100%;
-            background-color: rgba(26, 26, 26, 0.9);
-            border-radius: 10px;
-            padding: 30px;
-            box-shadow: 0 0 20px rgba(255, 107, 53, 0.5);
-            text-align: center;
-        }
-
-        /* Header com logo */
-        .header {
-            margin-bottom: 20px;
-        }
-
-        .logo {
-            font-size: 4em;
-            color: #ff6b35;
-            margin-bottom: 10px;
-        }
-
-        /* Nome da barbearia */
-        .nome-barbearia {
-            font-size: 2.5em;
-            color: #ff6b35;
-            font-weight: bold;
-            text-transform: uppercase;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        }
-
-        /* Mensagem temática */
-        .mensagem {
-            font-size: 1.2em;
-            margin-bottom: 20px;
-            color: #ffffff;
-        }
-
-        /* Botão Avaliar no Google */
-        .botao-google {
-            display: inline-block;
-            background-color: #ff6b35;
-            color: #1a1a1a;
-            padding: 12px 24px;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-            margin-bottom: 30px;
-            transition: background-color 0.3s ease;
-        }
-
-        .botao-google:hover {
-            background-color: #e55a2b;
-        }
-
-        /* Seção WiFi */
-        .wifi-section {
-            margin-bottom: 30px;
-        }
-
-        .wifi-info {
-            background-color: #3a3a3a;
-            padding: 15px;
-            border-radius: 5px;
-            margin-bottom: 15px;
-        }
-
-        .wifi-info p {
-            margin-bottom: 5px;
-        }
-
-        .copy-btn {
-            background-color: #ff6b35;
-            color: #1a1a1a;
-            border: none;
-            padding: 5px 10px;
-            border-radius: 3px;
-            cursor: pointer;
-            margin-left: 10px;
-            transition: background-color 0.3s ease;
-        }
-
-        .copy-btn:hover {
-            background-color: #e55a2b;
-        }
-
-        /* Campo de validação */
-        .validacao {
-            margin-bottom: 20px;
-        }
-
-        input[type="password"] {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ff6b35;
-            border-radius: 5px;
-            background-color: #3a3a3a;
-            color: #ffffff;
-            font-size: 1em;
-            margin-bottom: 10px;
-        }
-
-        button {
-            background-color: #ff6b35;
-            color: #1a1a1a;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: background-color 0.3s ease;
-        }
-
-        button:hover {
-            background-color: #e55a2b;
-        }
-
-        /* Feedback */
-        .feedback {
-            display: none;
-            margin-top: 20px;
-            padding: 10px;
-            border-radius: 5px;
-        }
-
-        .success {
-            background-color: #4CAF50;
-            color: #ffffff;
-        }
-
-        .error {
-            background-color: #f44336;
-            color: #ffffff;
-        }
-
-        /* Rodapé */
-        .rodape {
-            margin-top: 30px;
-            font-size: 2em;
-        }
-
-        /* Responsividade */
-        @media (max-width: 768px) {
-            .container {
-                padding: 20px;
-            }
-
-            .nome-barbearia {
-                font-size: 2em;
-            }
-
-            .logo {
-                font-size: 3em;
-            }
-        }
-    </style>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-    <div class="container">
-        <!-- Header com logo -->
-        <div class="header">
-            <div class="logo">🦁👑</div> <!-- Leão com coroa usando emojis -->
-            <h1 class="nome-barbearia">BARBEARIA REINO DA BARBA</h1>
+
+  <div class="container">
+
+    <header class="hero">
+      <div>
+        <h1>RELATÓRIO DE GARGALOS OPERACIONAIS</h1>
+
+        <p>
+          Dashboard executivo para análise de contratos,
+          doações e processos operacionais.
+        </p>
+      </div>
+
+      <div class="hero-card">
+        <span>PROCESSOS ANALISADOS</span>
+        <h2>6</h2>
+        <p>3 Doações • 3 Patrocínios</p>
+      </div>
+    </header>
+
+    <section class="cards">
+
+      <div class="card blue">
+        <span>Tempo Médio Total</span>
+        <h3>44 dias</h3>
+      </div>
+
+      <div class="card red">
+        <span>Maior Gargalo</span>
+        <h3>21 dias</h3>
+      </div>
+
+      <div class="card purple">
+        <span>Etapa Mais Demorada</span>
+        <h3>Assinaturas</h3>
+      </div>
+
+      <div class="card green">
+        <span>Maior Interação</span>
+        <h3>Marketing</h3>
+      </div>
+
+    </section>
+
+    <section class="section">
+      <div class="title-row">
+        <h2>Fluxo Operacional Geral</h2>
+
+        <div class="alert">
+          Maior atraso identificado: 21 dias
+        </div>
+      </div>
+
+      <div class="flow">
+
+        <div class="step">
+          <strong>Solicitação</strong>
+          <span>1 dia</span>
         </div>
 
-        <!-- Mensagem temática -->
-        <p class="mensagem">Bem-vindo ao Reino da Barba! Para entrar em nosso domínio, valide seu acesso ao WiFi e mostre que é digno de estar aqui.</p>
+        <div class="arrow">→</div>
 
-        <!-- Botão Avaliar no Google -->
-        <a href="https://maps.app.goo.gl/ZYqkTHuRVDWzNreA6?g_st=ic" class="botao-google" target="_blank">Avaliar no Google</a>
+        <div class="step">
+          <strong>Análise Jurídica</strong>
+          <span>5 dias</span>
+        </div>
 
-        <!-- Seção WiFi -->
-        <div class="wifi-section">
-            <h2>Informações do WiFi</h2>
-            <div class="wifi-info">
-                <p><strong>SSID:</strong> Reino da Barba <button class="copy-btn" onclick="copiarTexto('Reino da Barba')">Copiar</button></p>
-                <p><strong>Senha:</strong> #reinodabarba82# <button class="copy-btn" onclick="copiarTexto('#reinodabarba82#')">Copiar</button></p>
+        <div class="arrow">→</div>
+
+        <div class="step">
+          <strong>Validação e Ajustes</strong>
+          <span>16 dias</span>
+        </div>
+
+        <div class="arrow">→</div>
+
+        <div class="step">
+          <strong>Assinaturas</strong>
+          <span>13 dias</span>
+        </div>
+
+        <div class="arrow">→</div>
+
+        <div class="step">
+          <strong>Documentação</strong>
+          <span>3 dias</span>
+        </div>
+
+        <div class="arrow">→</div>
+
+        <div class="step">
+          <strong>Compras e Pagamento</strong>
+          <span>6 dias</span>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="grid">
+
+      <div class="section">
+        <h2>Principais Gargalos</h2>
+
+        <canvas id="gargalosChart"></canvas>
+      </div>
+
+      <div class="section">
+        <h2>Causas Raiz</h2>
+
+        <ul class="causas">
+          <li>Falta de padronização documental</li>
+          <li>Validações excessivamente manuais</li>
+          <li>Ausência de SLA entre áreas</li>
+          <li>Retrabalho recorrente</li>
+          <li>Assinaturas sem automação</li>
+        </ul>
+      </div>
+
+    </section>
+
+    <section class="section">
+      <h2>Análise Individual dos Processos</h2>
+
+      <div class="process-grid">
+
+        <div class="process-card">
+          <div class="process-top">
+            <div>
+              <h3>Doação – Ovos São Pedro</h3>
+              <span class="tag red-tag">Tempo Total: 53 dias</span>
             </div>
+
+            <div class="risk">
+              <small>Risco</small>
+              <strong>Crítico</strong>
+            </div>
+          </div>
+
+          <div class="gargalo-box">
+            <small>Principal Gargalo</small>
+            <strong>Validação e Assinaturas</strong>
+          </div>
+
+          <div class="bars">
+            <div class="bar-item">
+              <label>Validação</label>
+              <div class="bar-bg">
+                <div class="bar red-bar" style="width:90%"></div>
+              </div>
+            </div>
+
+            <div class="bar-item">
+              <label>Assinaturas</label>
+              <div class="bar-bg">
+                <div class="bar orange-bar" style="width:80%"></div>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <!-- Campo de validação -->
-        <div class="validacao">
-            <input type="password" id="senha-input" placeholder="Digite a senha do WiFi">
-            <button onclick="validarSenha()">Validar Acesso</button>
+        <div class="process-card">
+          <div class="process-top">
+            <div>
+              <h3>Patrocínio – TranspoAmazônia</h3>
+              <span class="tag orange-tag">Tempo Total: 35 dias</span>
+            </div>
+
+            <div class="risk">
+              <small>Risco</small>
+              <strong>Alto</strong>
+            </div>
+          </div>
+
+          <div class="gargalo-box">
+            <small>Principal Gargalo</small>
+            <strong>Ajustes e Negociação</strong>
+          </div>
+
+          <div class="bars">
+            <div class="bar-item">
+              <label>Negociação</label>
+              <div class="bar-bg">
+                <div class="bar orange-bar" style="width:85%"></div>
+              </div>
+            </div>
+
+            <div class="bar-item">
+              <label>Jurídico</label>
+              <div class="bar-bg">
+                <div class="bar yellow-bar" style="width:60%"></div>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <!-- Feedback -->
-        <div id="feedback" class="feedback"></div>
+        <div class="process-card">
+          <div class="process-top">
+            <div>
+              <h3>Doação – PanAmazônia</h3>
+              <span class="tag orange-tag">Tempo Total: 35 dias</span>
+            </div>
 
-        <!-- Rodapé com ícones -->
-        <div class="rodape">✂️ 🪒 💇‍♂️</div>
-    </div>
+            <div class="risk">
+              <small>Risco</small>
+              <strong>Alto</strong>
+            </div>
+          </div>
 
-    <script>
-        // Dados da barbearia
-        const nomeBarbearia = 'Barbearia Reino da Barba';
-        const ssid = 'Reino da Barba';
-        const senha = '#reinodabarba82#';
-        const googleLink = 'https://maps.app.goo.gl/ZYqkTHuRVDWzNreA6?g_st=ic';
+          <div class="gargalo-box">
+            <small>Principal Gargalo</small>
+            <strong>Validações Jurídicas</strong>
+          </div>
+        </div>
 
-        // Função para copiar texto
-        function copiarTexto(texto) {
-            navigator.clipboard.writeText(texto).then(() => {
-                alert('Copiado para a área de transferência!');
-            }).catch(err => {
-                console.error('Erro ao copiar: ', err);
-            });
-        }
+        <div class="process-card">
+          <div class="process-top">
+            <div>
+              <h3>Doação – FADA</h3>
+              <span class="tag yellow-tag">Tempo Total: 30 dias</span>
+            </div>
 
-        // Função para validar senha
-        function validarSenha() {
-            const inputSenha = document.getElementById('senha-input').value;
-            const feedback = document.getElementById('feedback');
+            <div class="risk">
+              <small>Risco</small>
+              <strong>Médio</strong>
+            </div>
+          </div>
 
-            if (inputSenha === senha) {
-                feedback.textContent = 'Acesso concedido! Você é digno de entrar no Reino da Barba.';
-                feedback.className = 'feedback success';
-                feedback.style.display = 'block';
-                // Salvar no LocalStorage
-                localStorage.setItem('wifiAcesso', 'validado');
-                // Opcional: redirecionar ou simular acesso
-            } else {
-                feedback.textContent = 'Senha incorreta. Tente novamente, súdito.';
-                feedback.className = 'feedback error';
-                feedback.style.display = 'block';
-            }
-        }
+          <div class="gargalo-box">
+            <small>Principal Gargalo</small>
+            <strong>Ajustes de Recibo</strong>
+          </div>
+        </div>
 
-        // Verificar se já validado no LocalStorage
-        window.onload = function() {
-            if (localStorage.getItem('wifiAcesso') === 'validado') {
-                document.getElementById('feedback').textContent = 'Acesso já validado anteriormente.';
-                document.getElementById('feedback').className = 'feedback success';
-                document.getElementById('feedback').style.display = 'block';
-            }
-        };
-    </script>
+        <div class="process-card">
+          <div class="process-top">
+            <div>
+              <h3>Patrocínio – TV A Crítica</h3>
+              <span class="tag yellow-tag">Tempo Total: 21 dias</span>
+            </div>
+
+            <div class="risk">
+              <small>Risco</small>
+              <strong>Médio</strong>
+            </div>
+          </div>
+
+          <div class="gargalo-box">
+            <small>Principal Gargalo</small>
+            <strong>Fluxo de Aprovação</strong>
+          </div>
+        </div>
+
+        <div class="process-card">
+          <div class="process-top">
+            <div>
+              <h3>Patrocínio – Alberto Esporte</h3>
+              <span class="tag green-tag">Tempo Total: 15 dias</span>
+            </div>
+
+            <div class="risk">
+              <small>Risco</small>
+              <strong>Baixo</strong>
+            </div>
+          </div>
+
+          <div class="gargalo-box">
+            <small>Principal Gargalo</small>
+            <strong>Ajustes Contratuais</strong>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="section conclusion">
+      <div>
+        <h2>Conclusão Estratégica</h2>
+
+        <p>
+          Os maiores atrasos estão concentrados nas etapas de validação,
+          negociação e assinaturas. A implementação de automações,
+          workflows e SLA entre áreas tende a reduzir significativamente
+          o tempo operacional.
+        </p>
+      </div>
+
+      <div class="goal-card">
+        <span>Meta de Redução</span>
+        <h3>30%</h3>
+        <p>Redução no tempo operacional</p>
+      </div>
+    </section>
+
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
+```
+
+---
+
+# style.css
+
+```css
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: #eef2f7;
+  color: #1a1a1a;
+}
+
+.container {
+  max-width: 1600px;
+  margin: auto;
+  padding: 40px;
+}
+
+.hero {
+  background: white;
+  border-radius: 30px;
+  padding: 50px;
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  align-items: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+.hero h1 {
+  font-size: 52px;
+  color: #0B3B6F;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 20px;
+  color: #666;
+  line-height: 1.7;
+}
+
+.hero-card {
+  background: linear-gradient(135deg,#0B3B6F,#1E63C7);
+  color: white;
+  padding: 40px;
+  border-radius: 30px;
+  min-width: 300px;
+}
+
+.hero-card h2 {
+  font-size: 80px;
+  margin: 10px 0;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+  gap: 25px;
+  margin: 35px 0;
+}
+
+.card {
+  color: white;
+  border-radius: 28px;
+  padding: 35px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.card span {
+  opacity: .8;
+  text-transform: uppercase;
+}
+
+.card h3 {
+  font-size: 40px;
+  margin-top: 15px;
+}
+
+.blue { background: linear-gradient(135deg,#0B3B6F,#1E63C7); }
+.red { background: linear-gradient(135deg,#d90429,#9d0208); }
+.purple { background: linear-gradient(135deg,#7b2cbf,#5a189a); }
+.green { background: linear-gradient(135deg,#2a9d8f,#1b7f72); }
+
+.section {
+  background: white;
+  border-radius: 30px;
+  padding: 40px;
+  margin-bottom: 35px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+.title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.alert {
+  background: #ffe5e5;
+  color: #d90429;
+  padding: 15px 25px;
+  border-radius: 100px;
+  font-weight: bold;
+}
+
+.section h2 {
+  color: #0B3B6F;
+  font-size: 38px;
+}
+
+.flow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.step {
+  background: linear-gradient(135deg,#0B3B6F,#1E63C7);
+  color: white;
+  padding: 22px 28px;
+  border-radius: 18px;
+  min-width: 190px;
+  text-align: center;
+}
+
+.step span {
+  display: block;
+  margin-top: 10px;
+  color: #ffd166;
+  font-weight: bold;
+}
+
+.arrow {
+  font-size: 35px;
+  color: #0B3B6F;
+  font-weight: bold;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+.causas {
+  margin-top: 25px;
+  padding-left: 20px;
+}
+
+.causas li {
+  margin-bottom: 20px;
+  line-height: 1.7;
+  font-size: 18px;
+}
+
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(420px,1fr));
+  gap: 30px;
+  margin-top: 35px;
+}
+
+.process-card {
+  background: #f8fafc;
+  border-radius: 28px;
+  padding: 30px;
+  border: 1px solid #e5e7eb;
+}
+
+.process-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.process-card h3 {
+  color: #0B3B6F;
+  font-size: 28px;
+  margin-bottom: 15px;
+}
+
+.tag {
+  display: inline-block;
+  padding: 10px 18px;
+  border-radius: 100px;
+  font-weight: bold;
+}
+
+.red-tag {
+  background: #ffe5e5;
+  color: #d90429;
+}
+
+.orange-tag {
+  background: #fff1df;
+  color: #f77f00;
+}
+
+.yellow-tag {
+  background: #fff7d6;
+  color: #d4a017;
+}
+
+.green-tag {
+  background: #e0fff1;
+  color: #2a9d8f;
+}
+
+.risk {
+  background: white;
+  padding: 18px;
+  border-radius: 20px;
+  text-align: center;
+}
+
+.risk strong {
+  display: block;
+  font-size: 24px;
+  color: #0B3B6F;
+  margin-top: 8px;
+}
+
+.gargalo-box {
+  background: white;
+  border-radius: 20px;
+  padding: 20px;
+  margin-top: 25px;
+}
+
+.gargalo-box strong {
+  display: block;
+  color: #d90429;
+  font-size: 22px;
+  margin-top: 10px;
+}
+
+.bars {
+  margin-top: 25px;
+}
+
+.bar-item {
+  margin-bottom: 20px;
+}
+
+.bar-item label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.bar-bg {
+  height: 18px;
+  background: #e5e7eb;
+  border-radius: 100px;
+  overflow: hidden;
+}
+
+.bar {
+  height: 100%;
+  border-radius: 100px;
+}
+
+.red-bar { background: #d90429; }
+.orange-bar { background: #f77f00; }
+.yellow-bar { background: #ffbe0b; }
+
+.conclusion {
+  background: linear-gradient(135deg,#0B3B6F,#1E63C7);
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  align-items: center;
+}
+
+.conclusion p {
+  margin-top: 20px;
+  font-size: 20px;
+  line-height: 1.8;
+}
+
+.goal-card {
+  background: white;
+  color: #0B3B6F;
+  border-radius: 30px;
+  padding: 40px;
+  text-align: center;
+  min-width: 320px;
+}
+
+.goal-card h3 {
+  font-size: 80px;
+  margin: 10px 0;
+}
+
+@media(max-width:1200px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    flex-direction: column;
+  }
+
+  .conclusion {
+    flex-direction: column;
+  }
+}
+```
+
+---
+
+# script.js
+
+```javascript
+const ctx = document.getElementById('gargalosChart');
+
+new Chart(ctx, {
+  type: 'doughnut',
+  data: {
+    labels: [
+      'Ajustes e Validações',
+      'Assinaturas',
+      'Erro de Requisição',
+      'Documentos Incompletos'
+    ],
+
+    datasets: [{
+      data: [45, 30, 15, 10],
+
+      backgroundColor: [
+        '#d90429',
+        '#7b2cbf',
+        '#f77f00',
+        '#219ebc'
+      ],
+
+      borderWidth: 0
+    }]
+  },
+
+  options: {
+    responsive: true,
+
+    plugins: {
+      legend: {
+        position: 'bottom'
+      }
+    }
+  }
+});
+```
+
+---
+
+# Publicar no GitHub Pages
+
+```bash
+1. Criar repositório no GitHub
+2. Subir os arquivos
+3. Ir em Settings
+4. Pages
+5. Deploy from branch
+6. Selecionar main branch
+7. Save
+```
+
+Seu dashboard ficará online com link próprio.
